@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.devMode" value="true" />
+
+    <include file="struts-default.xml"/>
+
+    <package name="person" extends="struts-default">
+        <action name="list" method="execute" class="personAction">
+            <result>pages/list.jsp</result>
+            <result name="input">pages/list.jsp</result>
+        </action>
+
+        <action name="remove" method="remove" class="personAction">
+            <result>pages/list.jsp</result>
+            <result name="input">pages/list.jsp</result>
+        </action>
+
+        <action name="save" method="save" class="personAction">
+            <result>pages/list.jsp</result>
+            <result name="input">pages/list.jsp</result>
+        </action>
+    </package>
+
+    <package name="movie" extends="struts-default">
+        <action name="list" method="list" class="movieAction">
+            <result>movie/list.jsp</result>
+        </action>
+
+        <action name="delete" method="delete" class="movieAction">
+            <result>movie/delete.jsp</result>
+        </action>
+
+        <action name="update" method="update" class="movieAction">
+            <result>movie/update.jsp</result>
+        </action>
+
+        <action name="create" method="create" class="movieAction">
+            <result>movie/create.jsp</result>
+        </action>
+
+        <action name="view" method="view" class="movieAction">
+            <result>movie/view.jsp</result>
+        </action>
+    </package>
+</struts>
+
