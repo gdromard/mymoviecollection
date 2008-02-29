@@ -1,9 +1,9 @@
 set HOME=%CD%\..
-set JAVA_HOME=C:\Home\st22085\tools\jdk1.6.0
-set ANT_HOME=C:\Home\st22085\tools\apache-ant-1.7.0
-set PROJECT_HOME=C:\Home\st22085\tools\apache-tomcat-6.0.14\webapps\Films
+set JAVA_HOME=D:\Program Files\Java\jre1.6.0_03
+rem set ANT_HOME=C:\Home\st22085\tools\apache-ant-1.7.0
+set PROJECT_HOME=%HOME%\..
 set LIB_HOME=%PROJECT_HOME%\WEB-INF\lib
-set CATALINA_HOME=C:\Home\st22085\tools\apache-tomcat-6.0.14
+set CATALINA_HOME=%PROJECT_HOME%\..\..
 set HSQLDB_HOME=%CD%\db\moviedb
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%SYSTEMROOT%;%SYSTEMROOT%\System32;
 rem JMX Activation
