@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="myPackage" extends="struts-default">
+		<action name="index" class="listMoviesAction">
+			<result>/jsp/movie/list.jsp</result>
+		</action>
+		<action name="list.movies" class="listMoviesAction">
+			<result>/jsp/movie/list.jsp</result>
+		</action>
+
+
+
+
+		<action name="exemple" class="net.dromard.movies.ExempleAction">
+			<result>/jsp/exemple.jsp</result>
+		</action>
+		<action name="helloWorld" class="net.dromard.movies.HelloWorldAction"> 
+			<result name="input">/jsp/index.jsp</result>
+			<result>/jsp/helloWorld.jsp</result>
+		</action>
+	</package>
+</struts>

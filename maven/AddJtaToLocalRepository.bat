@@ -1,0 +1,1 @@
+mvn install:install-file -DgroupId=javax.transaction -DartifactId=jta -Dversion=1.1 -Dpackaging=jar -Dfile=jta-1.1.jar
