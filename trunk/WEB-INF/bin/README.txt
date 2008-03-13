@@ -1,1 +1,0 @@
-http://blog.springframework.com/markf/archives/2006/05/30/getting-started-with-jpa-in-spring-20/

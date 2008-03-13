@@ -1,6 +1,0 @@
-
-PROJECT_HOME=`pwd`/../..
-LIB_HOME=$PROJECT_HOME/WEB-INF/lib
-HSQLDB_HOME=`pwd`/db/moviedb
-CATALINA_HOME=$PROJECT_HOME/../..
-
