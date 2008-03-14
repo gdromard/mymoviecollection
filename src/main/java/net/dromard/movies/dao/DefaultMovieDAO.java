@@ -1,4 +1,4 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -11,7 +11,7 @@ import net.dromard.movies.model.Movie;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class DefaultMovieService extends ServiceLocatorAware implements IMovieService {
+public class DefaultMovieDAO extends GenericDAO implements IMovieDAO {
 
 	public Movie findById(int id) {
 		return super.findById(Movie.class, id);
@@ -40,13 +40,5 @@ public class DefaultMovieService extends ServiceLocatorAware implements IMovieSe
 	@SuppressWarnings("unchecked")
 	public List<Movie> findByTitle(String title) {
 		return getEntityManager().createQuery("from " + Movie.class.getName() + " as obj where lower(obj.title) like lower(" + formatString("%"+title+"%") + ") or lower(obj.originalTitle) like lower(" + formatString("%"+title+"%") + ")").getResultList();
-	}
-
-	public List<String> findFromWWWByTitle(String title) throws MalformedURLException, IOException {
-		return MovieCoverExtractor.searchMovie(title);
-	}
-
-	public Movie getFromWWWByTitle(String title) throws MalformedURLException, IOException, ParseException {
-		return MovieCoverExtractor.extractMovie(getServiceLocator(), title, MovieApplicationContext.getImagePath());
 	}
 }

@@ -7,7 +7,7 @@ import net.dromard.common.util.system.Console;
 import net.dromard.movies.MovieApplicationContext;
 import net.dromard.movies.model.Movie;
 
-public class MovieConsole extends MovieApplicationContext{
+public class MovieConsole extends MovieApplicationContext {
 	private static final String[] FIRST_MENU = new String[] {
 			"Movie Manager",
 			"Search movie by title",
@@ -21,11 +21,11 @@ public class MovieConsole extends MovieApplicationContext{
 			try {
 				if (resp.equals("1")) {
 					resp = Console.ask("Movie title to search ?", null);
-					List<Movie> result = getServiceLocator().getMovieService().findByTitle(resp);
+					List<Movie> result = getServiceLocator().getDaoLocator().getMovieDAO().findByTitle(resp);
 					handleMovieSearch(result);
 				} else if (resp.equals("2")) {
 					resp = Console.ask("Movie title to search ?", null);
-					List<String> result = getServiceLocator().getMovieService().findFromWWWByTitle(resp);
+					List<String> result = getServiceLocator().getMovieExtractorService().findFromWWWByTitle(resp);
 					handleMovieCoverSearch(result);
 				}
 			} catch (Exception e) {
@@ -62,11 +62,11 @@ public class MovieConsole extends MovieApplicationContext{
 		String resp;
 		while (!(resp = Console.printMenu(menu, "Q")).equalsIgnoreCase("Q") || resp.equals(""+(menu.length-1))) {
 			try {
-				Movie movie = getServiceLocator().getMovieService().getFromWWWByTitle(result.get(Integer.parseInt(resp)-1));
+				Movie movie = getServiceLocator().getMovieExtractorService().getFromWWWByTitle(result.get(Integer.parseInt(resp)-1));
 				System.out.println(movie.toString());
 				resp = Console.ask("Do you want to create this movie ?", "Yes");
 				if (resp.equalsIgnoreCase("yes")) {
-					getServiceLocator().getMovieService().persist(movie);
+					getServiceLocator().getDaoLocator().getMovieDAO().persist(movie);
 					return;
 				}
 			} catch (Exception e) {

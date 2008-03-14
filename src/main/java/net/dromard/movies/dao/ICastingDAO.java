@@ -1,10 +1,10 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
 import net.dromard.movies.model.Casting;
 
-public interface ICastingService {
+public interface ICastingDAO {
 	public Casting findById(int id);
 	
 	public List<Casting> findAll();

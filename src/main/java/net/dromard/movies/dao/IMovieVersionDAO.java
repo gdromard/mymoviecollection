@@ -1,10 +1,10 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
 import net.dromard.movies.model.MovieVersion;
 
-public interface IMovieVersionService {
+public interface IMovieVersionDAO {
 	public MovieVersion findById(int id);
 	
 	public List<MovieVersion> findAll();

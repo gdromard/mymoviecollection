@@ -36,39 +36,43 @@
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-	<!-- Services Locator -->
-    <bean id="serviceLocator" scope="singleton" class="net.dromard.movies.service.ServiceLocator">
-        <property name="movieService" ref="movieService" />
-        <property name="movieNationalityService" ref="movieNationalityService" />
-        <property name="movieGenreService" ref="movieGenreService" />
-        <property name="movieQualityService" ref="movieQualityService" />
-        <property name="movieVersionService" ref="movieVersionService" />
-        <property name="movieFormatService" ref="movieFormatService" />
-        <property name="castingService" ref="castingService" />
+	<!-- DAO -->
+    <bean id="movieDAO" class="net.dromard.movies.dao.DefaultMovieDAO"/>
+    <bean id="castingDAO" class="net.dromard.movies.dao.DefaultCastingDAO"/>
+    <bean id="movieNationalityDAO" class="net.dromard.movies.dao.DefaultMovieNationalityDAO"/>
+    <bean id="movieGenreDAO" class="net.dromard.movies.dao.DefaultMovieGenreDAO"/>
+    <bean id="movieQualityDAO" class="net.dromard.movies.dao.DefaultMovieQualityDAO"/>
+    <bean id="movieVersionDAO" class="net.dromard.movies.dao.DefaultMovieVersionDAO"/>
+    <bean id="movieFormatDAO" class="net.dromard.movies.dao.DefaultMovieFormatDAO"/>
+
+	<!-- DAOs Locator -->
+    <bean id="daoLocator" scope="singleton" class="net.dromard.movies.dao.DAOLocator">
+        <property name="movieDAO" ref="movieDAO" />
+        <property name="movieNationalityDAO" ref="movieNationalityDAO" />
+        <property name="movieGenreDAO" ref="movieGenreDAO" />
+        <property name="movieQualityDAO" ref="movieQualityDAO" />
+        <property name="movieVersionDAO" ref="movieVersionDAO" />
+        <property name="movieFormatDAO" ref="movieFormatDAO" />
+        <property name="castingDAO" ref="castingDAO" />
     </bean>
 
 	<!-- Services -->
-    <bean id="movieService" class="net.dromard.movies.service.DefaultMovieService">
+    <bean id="movieExtractorService" class="net.dromard.movies.service.MovieCoverExtractorService">
+        <property name="daoLocator" ref="daoLocator" />
+    </bean>
+
+	<!-- Services Locator -->
+    <bean id="serviceLocator" class="net.dromard.movies.service.ServiceLocator">
+        <property name="daoLocator" ref="daoLocator" />
+        <property name="movieExtractorService" ref="movieExtractorService" />
+    </bean>
+
+	<!-- Movie Actions -->
+    <bean id="moviesAction" scope="prototype"  class="net.dromard.movies.web.action.MoviesAction">
         <property name="serviceLocator" ref="serviceLocator" />
     </bean>
-    <bean id="castingService" class="net.dromard.movies.service.DefaultCastingService"/>
-    <bean id="movieNationalityService" class="net.dromard.movies.service.DefaultMovieNationalityService"/>
-    <bean id="movieGenreService" class="net.dromard.movies.service.DefaultMovieGenreService"/>
-    <bean id="movieQualityService" class="net.dromard.movies.service.DefaultMovieQualityService"/>
-    <bean id="movieVersionService" class="net.dromard.movies.service.DefaultMovieVersionService"/>
-    <bean id="movieFormatService" class="net.dromard.movies.service.DefaultMovieFormatService"/>
-
-    <bean id="listMoviesAction" scope="prototype"  class="net.dromard.movies.web.action.ListMoviesAction">
-        <constructor-arg ref="movieService" />
-    </bean>
-    <bean id="editMovieAction" scope="prototype"  class="net.dromard.movies.web.action.EditMovieAction">
-        <constructor-arg ref="movieService" />
-    </bean>
-    <bean id="updateMovieAction" scope="prototype"  class="net.dromard.movies.web.action.UpdateMovieAction">
-        <constructor-arg ref="movieService" />
-    </bean>
-    <bean id="deleteMovieAction" scope="prototype"  class="net.dromard.movies.web.action.DeleteMovieAction">
-        <constructor-arg ref="movieService" />
+    <bean id="movieAction" scope="prototype"  class="net.dromard.movies.web.action.MovieAction">
+        <property name="serviceLocator" ref="serviceLocator" />
     </bean>
 </beans>
 

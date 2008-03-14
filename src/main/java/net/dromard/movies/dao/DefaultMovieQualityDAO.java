@@ -1,14 +1,13 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
-import net.dromard.movies.dao.GenericDAO;
 import net.dromard.movies.model.MovieQuality;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class DefaultMovieQualityService extends GenericDAO implements IMovieQualityService {
+public class DefaultMovieQualityDAO extends GenericDAO implements IMovieQualityDAO {
 
 	public MovieQuality findById(int id) {
 		return super.findById(MovieQuality.class, id);

@@ -1,14 +1,13 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
-import net.dromard.movies.dao.GenericDAO;
 import net.dromard.movies.model.Casting;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class DefaultCastingService extends GenericDAO implements ICastingService {
+public class DefaultCastingDAO extends GenericDAO implements ICastingDAO {
 
 	public Casting findById(int id) {
 		return super.findById(Casting.class, id);

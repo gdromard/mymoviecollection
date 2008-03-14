@@ -1,10 +1,10 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
 import net.dromard.movies.model.MovieGenre;
 
-public interface IMovieGenreServce {
+public interface IMovieGenreDAO {
 	public MovieGenre findById(int id);
 	
 	public List<MovieGenre> findAll();
