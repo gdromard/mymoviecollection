@@ -1,14 +1,13 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
-import net.dromard.movies.dao.GenericDAO;
 import net.dromard.movies.model.MovieGenre;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class DefaultMovieGenreService extends GenericDAO implements IMovieGenreServce {
+public class DefaultMovieGenreDAO extends GenericDAO implements IMovieGenreDAO {
 
 	public MovieGenre findById(int id) {
 		return super.findById(MovieGenre.class, id);

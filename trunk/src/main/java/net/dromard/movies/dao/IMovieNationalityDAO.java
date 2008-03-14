@@ -1,10 +1,10 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
 import net.dromard.movies.model.MovieNationality;
 
-public interface IMovieNationalityService {
+public interface IMovieNationalityDAO {
 	public MovieNationality findById(int id);
 	
 	public List<MovieNationality> findAll();

@@ -1,10 +1,10 @@
-package net.dromard.movies.service;
+package net.dromard.movies.dao;
 
 import java.util.List;
 
 import net.dromard.movies.model.MovieQuality;
 
-public interface IMovieQualityService {
+public interface IMovieQualityDAO {
 	public MovieQuality findById(int id);
 	
 	public List<MovieQuality> findAll();

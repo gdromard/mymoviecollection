@@ -24,12 +24,25 @@ import java.util.zip.ZipInputStream;
 
 import net.dromard.common.io.StreamHelper;
 import net.dromard.common.util.StringHelper;
+import net.dromard.movies.MovieApplicationContext;
+import net.dromard.movies.dao.DAOLocator;
+import net.dromard.movies.dao.DAOLocatorAware;
 import net.dromard.movies.model.Movie;
 
-public class MovieCoverExtractor {
+public class MovieCoverExtractorService extends DAOLocatorAware implements IMovieExtractorService {
 	private static String SEARCH_URL = "http://www.moviecovers.com/multicrit.html?tri=Titre&slow=2&titre={0}";
 	private static String GET_URL = "http://www.moviecovers.com/getzip.html/{0}.zip";
 	private static Map<String, String> titleToUrl = new HashMap<String, String>();
+
+	public List<String> findFromWWWByTitle(String title) throws MalformedURLException, IOException {
+		return searchMovie(title);
+	}
+
+	public Movie getFromWWWByTitle(String title) throws MalformedURLException, IOException, ParseException {
+		return extractMovie(getDaoLocator(), title, MovieApplicationContext.getImagePath());
+	}
+
+	
 	public static List<String> searchMovie(String movieName) throws MalformedURLException, IOException {
 		final String SEARCH_MOVIE_KEY = "<LI><A href=\"/film/titre_";
 		String url = MessageFormat.format(SEARCH_URL, URLEncoder.encode(movieName, "UTF-8"));
@@ -49,7 +62,7 @@ public class MovieCoverExtractor {
 	    return foundMovies;
 	}
 	
-	public static Movie extractMovie(ServiceLocator locator, String exactName, String coverStoringPath) throws MalformedURLException, IOException, ParseException {
+	public static Movie extractMovie(DAOLocator daoLocator, String exactName, String coverStoringPath) throws MalformedURLException, IOException, ParseException {
 		// Remove Year at end of movie Name
 		/*
 		if (exactName.substring(exactName.length()-7).matches(" \\([0-9]*\\)")) {
@@ -63,10 +76,10 @@ public class MovieCoverExtractor {
 		File zipTmp = downloadZip(new URL(url).openStream());
 		System.out.println("Zip file successfully downloaded to " + zipTmp.getAbsolutePath());
 		File movieCoverDumpFile = extractZipFile(zipTmp, coverStoringPath);
-		return loadMovie(locator, movieCoverDumpFile);
+		return loadMovie(daoLocator, movieCoverDumpFile);
 	}
 	
-    private static Movie loadMovie(ServiceLocator locator, File movieCoverDumpFile) throws UnsupportedEncodingException, MalformedURLException, IOException, ParseException {
+    private static Movie loadMovie(DAOLocator daoLocator, File movieCoverDumpFile) throws UnsupportedEncodingException, MalformedURLException, IOException, ParseException {
 	    BufferedReader filmReader = new BufferedReader(new InputStreamReader(movieCoverDumpFile.toURL().openStream(), "ISO-8859-1"));
 	    String title = filmReader.readLine();
 	    String[] directors = filmReader.readLine().split("/");
@@ -83,11 +96,11 @@ public class MovieCoverExtractor {
 	    movie.setTitle(title);
 	    for (int i = 0; i < directors.length; i++) {
 	    	String[] cast = extractLastnameFirstName(directors[i]);
-	    	movie.setDirector(locator.getCastingService().findOrCreate(cast[1], cast[0]));
+	    	movie.setDirector(daoLocator.getCastingDAO().findOrCreate(cast[1], cast[0]));
 		}
     	movie.setCasting(StringHelper.arrayToString(casting, ", "));
-		movie.setNationality(locator.getMovieNationalityService().findOrCreate(nationality));
-	    movie.setGenre(locator.getMovieGenreService().findOrCreate(genre));
+		movie.setNationality(daoLocator.getMovieNationalityDAO().findOrCreate(nationality));
+	    movie.setGenre(daoLocator.getMovieGenreDAO().findOrCreate(genre));
 	    movie.setYear(Integer.parseInt(year));
 	    SimpleDateFormat formater = new SimpleDateFormat("HH:mm");
 	    movie.setLength(formater.parse(length.replace('H', ':')));

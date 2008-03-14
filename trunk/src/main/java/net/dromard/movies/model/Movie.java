@@ -28,8 +28,6 @@ public class Movie implements Serializable {
     private String synopsis;
     @Column(name = "IMAGE_LINK")
     private String imageLink;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Casting director;
     private String casting;
     @ManyToOne(cascade = CascadeType.ALL)
     private MovieFormat format;
@@ -41,6 +39,8 @@ public class Movie implements Serializable {
     private MovieGenre genre;
     @ManyToOne(cascade = CascadeType.ALL)
     private MovieNationality nationality;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Casting director;
     @ManyToOne(cascade = CascadeType.ALL)
     private Casting cast1;
     @ManyToOne(cascade = CascadeType.ALL)
