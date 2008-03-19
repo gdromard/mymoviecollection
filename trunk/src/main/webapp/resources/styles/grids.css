@@ -1,0 +1,30 @@
+/* A CSS Framework by Gabriel Dromard of Content with Style */
+
+
+table.grid {
+	border-spacing: 1px;
+	border-collapse: separate;
+	border: 1px solid #005fa9;
+	background: rgb(230,230,230);
+}
+table.grid th {
+	text-align: center;
+	padding: 5px;
+	background: #4e8ab9;
+}
+table.grid td {
+	padding: 3px;	
+}
+
+table.grid tr.line0 td {
+	background-color: white;
+}
+table.grid tr.line1 td {
+	background-color: rgb(245,245,245);
+}
+table.grid tr.line0:hover td {
+	background-color: #C0D6E3;
+}
+table.grid tr.line1:hover td {
+	background-color: #C0D6E3;
+}

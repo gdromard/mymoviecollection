@@ -1,61 +1,101 @@
-/* A CSS Framework by Mike Stenhouse of Content with Style */
+/* A CSS Framework by Gabriel Dromard of Content with Style */
 
 /* SITE SPECIFIC LAYOUT */
     body {
         margin: 0;
         padding: 0;
-        
-        background: white;
-              
-        text-align: center;
+   		background: transparent url(../images/bg-xy.png) repeat;
     }
     div#page {
-        width: 780px;
-        
+        width: 80%;
         margin:  0 auto;
-        padding: 0;
-        
-        background: white;
-        text-align: center;
     }
     
     /* HEADER */
         div#header {
-        	display: none;
-        	margin: 0 0 5em 0;
-            padding: 40px 20px;
-            
-            color: white;
-            background: black;
-            
+        	margin: 0;
+            padding: 0;
             text-align: left;
+            height:186px;
+        	width: 100%;
         }
-        div#branding {
+        div#header table.design {
+	        min-width: 600px;
+        	border-collapse: collapse;
+        	width: 100%;
+        	margin: 0px;
+        	padding: 0px;
+        }
+		div#header .left {
+            background: transparent url(../images/header-left.png) no-repeat;
+            width: 299px;
+            height:186px;
+        }
+        div#header .middle {
+            background: transparent url(../images/header-x.png) repeat-x;
+        }
+		div#header .right {
+            background: transparent url(../images/header-right.png) no-repeat right 0px;
+            width: 265px;
+            height: 186px;
+		}
+        
+        div#header .content {
+	        display: none;
+        }
+		div#branding {
+			display: none;
             float: left;
             width: 40%;
-            
             margin: 0;
             padding: 10px 0 10px 20px;
-            
             text-align: left;
         }
         div#search {
+        	display: none;
             float: right;
             width: 49%;
-            
             margin: 0;
             padding: 16px 20px 0 0;
-            
             text-align: right;
         }
     /* END HEADER */
     
     
     /* CONTENT */
-        div#content {
+		div#content {
+        	margin: 0;
+            padding: 0;
+            text-align: left;
+        	width: 100%;
+		}
+        div#content table.design {
+	        min-width: 600px;
+        	border-collapse: collapse;
+        	width: 100%;
+        	height: 100%;
+        	margin: 0px;
+        	padding: 0px;
+        }
+		div#content .left {
+            background: transparent url(../images/left-y.png) repeat-y;
+            height: 196px;
+            width: 56px;
+        }
+        div#content .middle {
+        	background: transparent url(../images/content-xy.png) repeat;
+            text-align: left;
+            padding-top: 20px;
+        	vertical-align: top;
+        }
+        div#content .right {
+            background: transparent url(../images/right-y.png) repeat-y right 0px;
+            height: 196px;
+            width: 52px;
+        }
+        div#content .content {
             
         }
-        
         /* MAIN */
             div#main {
                 
@@ -67,14 +107,39 @@
                 
             }
         /* END SUB */
-        
     /* END CONTENT */
     
     
     /* FOOTER */
         div#footer {
+        	margin: 0;
+            padding: 0;
+            text-align: left;
+        	width: 100%;
+        }
+        div#footer table.design {
+	        min-width: 600px;
+        	border-collapse: collapse;
+        	width: 100%;
+        	margin: 0px;
+        	padding: 0px;
+        }
+		div#footer .left {
+            background: transparent url(../images/footer-left.png) no-repeat;
+            height: 182px;
+            width: 56px;
+        }
+        div#footer .middle {
+            background: transparent url(../images/footer-x.png) repeat;
+            text-align: left;
+        }
+        div#footer .right {
+            background: transparent url(../images/footer-right.png) no-repeat right 0px;
+            height: 182px;
+            width: 196px;
+        }
+        div#footer .content {
         	display: none;
-        	color: white;
             background-color: black;
         }
         div#footer p {
