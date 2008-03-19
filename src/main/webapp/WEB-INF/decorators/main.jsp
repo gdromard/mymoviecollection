@@ -24,19 +24,35 @@
             //Rounded("blockquote","tr bl","#ECF1F9","#CDFFAA","smooth border #88D84F");
         }
     </script>
+    <style type="text/css">
+    	body { behavior: url(<s:url value='/resources/styles/csshover.htc'/>); }
+    </style>
     <decorator:head/>
 </head>
 <body id="page-home">
     <div id="page">
-        <div id="header" class="clearfix">
-        	My Movie Collection
-            <hr />
-        </div>
+		<div id="header">
+			<table class="design"><tr><td class="left"></td>
+			<td class="middle">
+		        <div class="content">
+    		    	My Movie Collection
+        		</div>
         
-        <div id="content" class="clearfix">
-            <div id="main">
-            	<decorator:body/>
-            </div>
+	       		<div id="search">
+		        	Search
+            	</div>
+		        <div id="branding">
+		        	Branding
+		        </div>
+			</td><td class="right"></td></tr></table>
+		</div>
+		<div id="content">
+			<table class="design"><tr><td class="left"></td>
+			<td class="middle">
+		        <div class="content" class="clearfix">
+		            <div class="main">
+		            	<decorator:body/>
+		            </div>
             
             <div id="sub">
             	<h3>Sub Content</h3>
@@ -69,15 +85,19 @@
                 </div>
                 <hr />
             </div>
-        </div>
-        
-        <div id="footer" class="clearfix">
-            Footer
-        </div>
-        
-    </div>
+	        </div>
+				</td><td class="right"></td></tr></table>
+			</div>
+			<div id="footer">
+				<table class="design"><tr><td class="left"></td><td class="middle">
+				<div class="content">
+		            Footer
+		        </div>
+				</td><td class="right"></td></tr></table>
+		    </div>
+		</div>
     
-    <div id="extra1">&nbsp;</div>
-    <div id="extra2">&nbsp;</div>
-</body>
+	    <div id="extra1">&nbsp;</div>
+	    <div id="extra2">&nbsp;</div>
+	</body>
 </html>

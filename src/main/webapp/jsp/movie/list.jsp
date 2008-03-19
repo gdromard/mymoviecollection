@@ -9,7 +9,7 @@
 	<title>Movie List</title>
 </head>
 <body>
-	<table>
+	<table class="grid">
 		<tr>
 			<th>Id</th>
 			<th>Title</th>

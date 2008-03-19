@@ -18,7 +18,7 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
     private Integer id;
 	private List<MovieFormat> formats;
 	private List<MovieGenre> genres;
-	private List<MovieNationality> nationality;
+	private List<MovieNationality> nationalities;
 	private List<MovieQuality> qualities;
 	private List<MovieVersion> versions;
 	private List<Casting> castings;
@@ -61,10 +61,16 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
         	movie = getServiceLocator().getDaoLocator().getMovieDAO().findById(id);
         	formats = getServiceLocator().getDaoLocator().getMovieFormatDAO().findAll();
         	genres = getServiceLocator().getDaoLocator().getMovieGenreDAO().findAll();
-        	nationality = getServiceLocator().getDaoLocator().getMovieNationalityDAO().findAll();
+        	nationalities = getServiceLocator().getDaoLocator().getMovieNationalityDAO().findAll();
         	qualities = getServiceLocator().getDaoLocator().getMovieQualityDAO().findAll();
         	versions = getServiceLocator().getDaoLocator().getMovieVersionDAO().findAll();
         	castings = getServiceLocator().getDaoLocator().getCastingDAO().findAll();
+        	System.out.println("[DEBUG] MovieAction.prepare() - formats.size: " + formats.size());
+        	System.out.println("[DEBUG] MovieAction.prepare() - genres.size: " + genres.size());
+        	System.out.println("[DEBUG] MovieAction.prepare() - nationality.size: " + nationalities.size());
+        	System.out.println("[DEBUG] MovieAction.prepare() - qualities.size: " + qualities.size());
+        	System.out.println("[DEBUG] MovieAction.prepare() - versions.size: " + versions.size());
+        	System.out.println("[DEBUG] MovieAction.prepare() - castings.size: " + castings.size());
         }
     }
     
@@ -89,27 +95,69 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
     
     /* ----------- List Setters / Getters ----------- */
     
-	protected List<MovieFormat> getFormats() {
+	public List<MovieFormat> getFormats() {
 		return formats;
 	}
 
-	protected List<MovieGenre> getGenres() {
+	public List<MovieGenre> getGenres() {
 		return genres;
 	}
 
-	protected List<MovieNationality> getNationality() {
-		return nationality;
+	public List<MovieNationality> getNationalities() {
+		return nationalities;
 	}
 
-	protected List<MovieQuality> getQualities() {
+	public List<MovieQuality> getQualities() {
 		return qualities;
 	}
 
-	protected List<MovieVersion> getVersions() {
+	public List<MovieVersion> getVersions() {
 		return versions;
 	}
 
-	protected List<Casting> getCastings() {
+	public List<Casting> getCastings() {
 		return castings;
+	}
+
+	/**
+	 * @param castings the castings to set
+	 */
+	public void setCastings(List<Casting> castings) {
+		this.castings = castings;
+	}
+
+	/**
+	 * @param formats the formats to set
+	 */
+	public void setFormats(List<MovieFormat> formats) {
+		this.formats = formats;
+	}
+
+	/**
+	 * @param genres the genres to set
+	 */
+	public void setGenres(List<MovieGenre> genres) {
+		this.genres = genres;
+	}
+
+	/**
+	 * @param nationality the nationality to set
+	 */
+	public void setNationalities(List<MovieNationality> nationality) {
+		this.nationalities = nationality;
+	}
+
+	/**
+	 * @param qualities the qualities to set
+	 */
+	public void setQualities(List<MovieQuality> qualities) {
+		this.qualities = qualities;
+	}
+
+	/**
+	 * @param versions the versions to set
+	 */
+	public void setVersions(List<MovieVersion> versions) {
+		this.versions = versions;
 	}
 }
