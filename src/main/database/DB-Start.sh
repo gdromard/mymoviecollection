@@ -1,5 +1,8 @@
 . setenv.sh
-cd $HSQLDB_HOME
-echo $LIB_HOME
-java -cp $LIB_HOME/hsqldb.jar org.hsqldb.Server
 
+export CLASSPATH=$CD/hsqldb.jar
+cd $HSQLDB_HOME
+
+echo $PROJECT_HOME
+
+java -cp $CLASSPATH org.hsqldb.Server
