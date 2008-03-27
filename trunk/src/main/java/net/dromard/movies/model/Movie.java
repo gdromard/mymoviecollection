@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import net.dromard.common.util.StringHelper;
+
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
@@ -147,7 +149,9 @@ public class Movie implements Serializable {
 	 * @param director the director to set
 	 */
 	public void setDirector(Casting director) {
-		this.director = director;
+		if (!StringHelper.isEmpty(director.getFirstname()) && StringHelper.isEmpty(director.getLastname())) {
+			this.director = director;
+		}
 	}
 	/**
 	 * @return the imageLink
@@ -181,10 +185,12 @@ public class Movie implements Serializable {
 		return cast1;
 	}
 	/**
-	 * @param cast1 the cast1 to set
+	 * @param cast the cast1 to set
 	 */
-	public void setCast1(Casting cast1) {
-		this.cast1 = cast1;
+	public void setCast1(Casting cast) {
+		if (!StringHelper.isEmpty(cast.getFirstname()) && StringHelper.isEmpty(cast.getLastname())) {
+			this.cast1 = cast;
+		}
 	}
 	/**
 	 * @return the cast2
@@ -193,10 +199,12 @@ public class Movie implements Serializable {
 		return cast2;
 	}
 	/**
-	 * @param cast2 the cast2 to set
+	 * @param cast the cast2 to set
 	 */
-	public void setCast2(Casting cast2) {
-		this.cast2 = cast2;
+	public void setCast2(Casting cast) {
+		if (!StringHelper.isEmpty(cast.getFirstname()) && StringHelper.isEmpty(cast.getLastname())) {
+			this.cast2 = cast;
+		}
 	}
 	/**
 	 * @return the cast3
@@ -205,10 +213,12 @@ public class Movie implements Serializable {
 		return cast3;
 	}
 	/**
-	 * @param cast3 the cast3 to set
+	 * @param cast the cast3 to set
 	 */
-	public void setCast3(Casting cast3) {
-		this.cast3 = cast3;
+	public void setCast3(Casting cast) {
+		if (!StringHelper.isEmpty(cast.getFirstname()) && StringHelper.isEmpty(cast.getLastname())) {
+			this.cast3 = cast;
+		}
 	}
 	/**
 	 * @return the cast4
@@ -217,10 +227,12 @@ public class Movie implements Serializable {
 		return cast4;
 	}
 	/**
-	 * @param cast4 the cast4 to set
+	 * @param cast the cast4 to set
 	 */
-	public void setCast4(Casting cast4) {
-		this.cast4 = cast4;
+	public void setCast4(Casting cast) {
+		if (!StringHelper.isEmpty(cast.getFirstname()) && StringHelper.isEmpty(cast.getLastname())) {
+			this.cast4 = cast;
+		}
 	}
 	/**
 	 * @return the format
@@ -232,7 +244,9 @@ public class Movie implements Serializable {
 	 * @param format the format to set
 	 */
 	public void setFormat(MovieFormat format) {
-		this.format = format;
+		if (!StringHelper.isEmpty(format.getName())) {
+			this.format = format;
+		}
 	}
 	/**
 	 * @return the genre
@@ -244,7 +258,9 @@ public class Movie implements Serializable {
 	 * @param genre the genre to set
 	 */
 	public void setGenre(MovieGenre genre) {
-		this.genre = genre;
+		if (!StringHelper.isEmpty(genre.getName())) {
+			this.genre = genre;
+		}
 	}
 	/**
 	 * @return the nationality
@@ -256,7 +272,9 @@ public class Movie implements Serializable {
 	 * @param nationality the nationality to set
 	 */
 	public void setNationality(MovieNationality nationality) {
-		this.nationality = nationality;
+		if (!StringHelper.isEmpty(nationality.getName())) {
+			this.nationality = nationality;
+		}
 	}
 	/**
 	 * @return the quality
@@ -268,7 +286,9 @@ public class Movie implements Serializable {
 	 * @param quality the quality to set
 	 */
 	public void setQuality(MovieQuality quality) {
-		this.quality = quality;
+		if (!StringHelper.isEmpty(quality.getName())) {
+			this.quality = quality;
+		}
 	}
 	/**
 	 * @return the version
@@ -280,7 +300,9 @@ public class Movie implements Serializable {
 	 * @param version the version to set
 	 */
 	public void setVersion(MovieVersion version) {
-		this.version = version;
+		if (!StringHelper.isEmpty(version.getName())) {
+			this.version = version;
+		}
 	}
 	/**
 	 * @return the year

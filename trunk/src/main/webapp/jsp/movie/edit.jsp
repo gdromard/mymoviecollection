@@ -11,6 +11,7 @@
 </head>
 <body>
 	<s:form action="update" theme="xhtml">
+		<s:hidden key="id"/>
 		<s:textfield label="Id"             name="movie.id" readonly="true"/>
 		<s:textfield label="Title"          name="movie.title" />
 		<s:textfield label="Original Title" name="movie.originalTitle" />
@@ -22,7 +23,7 @@
 		<s:select label="Version"     name="movie.version.id"     list="versions" listKey="id" listValue="name" emptyOption="true"/>
 		<s:select label="Quality"     name="movie.quality.id"     list="qualities" listKey="id" listValue="name" emptyOption="true"/>
 		<s:select label="Genre"       name="movie.genre.id"       list="genres" listKey="id" listValue="name" emptyOption="true"/>
-		<s:select label="Nationality" name="movie.nationality.id" list="nationality" listKey="id" listValue="name" emptyOption="true"/>
+		<s:select label="Nationalities" name="movie.nationalities.id" list="nationalities" listKey="id" listValue="name" emptyOption="true"/>
 		<s:select label="Director"    name="movie.director.id"    list="castings" listKey="id" listValue="%{firstname + ', ' + lastname}" emptyOption="true"/>
 		<s:select label="Casting"     name="movie.cast1.id"       list="castings" listKey="id" listValue="%{firstname + ', ' + lastname}" emptyOption="true"/>
 		<s:select                     name="movie.cast2.id"       list="castings" listKey="id" listValue="%{firstname + ', ' + lastname}" emptyOption="true"/>

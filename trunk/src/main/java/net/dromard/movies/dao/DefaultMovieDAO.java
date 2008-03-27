@@ -1,11 +1,7 @@
 package net.dromard.movies.dao;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.text.ParseException;
 import java.util.List;
 
-import net.dromard.movies.MovieApplicationContext;
 import net.dromard.movies.model.Movie;
 
 import org.springframework.transaction.annotation.Transactional;
