@@ -10,9 +10,7 @@
 			<result type="redirect">/movie/list.action</result>
 		</action>
 	</package>
-	
-	
-	
+
 	<package name="movie" namespace="/movie" extends="struts-default">
 		<default-interceptor-ref name="paramsPrepareParamsStack"/>
 
@@ -26,13 +24,13 @@
 			<result>/jsp/movie/edit.jsp</result>
 		</action>
 		<action name="create" class="movieAction">
-			<result>/jsp/movie/create.jsp</result>
+			<result type="chain">view</result>
 		</action>
 		<action name="delete" class="movieAction" method="delete">
-			<result type="redirect">/movieList.action</result>
+			<result type="chain">list</result>
 		</action>
 		<action name="update" class="movieAction" method="update">
-			<result>/jsp/movie/view.jsp</result>
+			<result type="chain">view</result>
 		</action>
 	</package>
 
