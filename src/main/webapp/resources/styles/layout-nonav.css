@@ -13,8 +13,8 @@
         text-align: left;
     }
     div#main {
-        float: right;
-        width: 500px;
+        float: left;
+        width: 700px;
         display: inline;
     }
     div#local {

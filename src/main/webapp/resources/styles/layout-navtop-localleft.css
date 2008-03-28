@@ -6,10 +6,8 @@
     div#content {
         position: relative;
         width: 701px;
-        
         margin: 0 auto 20px auto;
         padding: 0;
-        
         text-align: left;
     }
     div#main {
@@ -27,10 +25,12 @@
     }
     div#nav {
         position: absolute;
-        top: -15px;
-        left: 0;
+        top: -30px;
+        left: 40px;
         width: 100%;
-        
         text-align: left;
+    }
+	div#nav h3 {
+    	display: none;
     }
 /* END CONTENT */
