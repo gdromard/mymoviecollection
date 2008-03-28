@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>My Movie Collection</title>
+    <link href="../resources/styles/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <style type="text/css">
+    	body { behavior: url(../resources/styles/csshover.htc); }
+    </style>
+    <link rel="stylesheet" href="../struts/xhtml/styles.css" type="text/css"/>
+	<script type="text/javascript" src="../resources/scripts/prototype.js"></script>
+</head>
+<body id="page-home">
+    <div id="page">
+		<div id="header">
+			<table class="design"><tr><td class="left"></td>
+			<td class="middle">
+		        <div class="content">
+    		    	My Movie Collection
+        		</div>
+	       		<div id="search">
+		        	Search
+            	</div>
+		        <div id="branding">
+		        	Branding
+		        </div>
+			</td><td class="right"></td></tr></table>
+		</div>
+		<div id="content">
+			<table class="design"><tr><td class="left"></td>
+			<td class="middle">
+
+		        <div class="content" class="clearfix">
+		            <div id="main">
+		            	<div id="ajax-content">
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+							Content<br/>
+						</div>
+		            </div>
+            
+            <div id="sub">
+            	<h3>Sub Content</h3>
+                <ul>
+                    <li><a href="#">Content page 1</a>
+		                <ul>
+		                    <li><a href="#">Content page 1.1</a></li>
+		                    <li><a href="#">Content page 1.2</a></li>
+		                    <li><a href="#">Content page 1.3</a></li>
+		                    <li><a href="#">Content page 1.4</a></li>
+		                    <li><a href="#">Content page 1.5</a></li>
+		                    <li><a href="#">Content page 1.6</a></li>
+		                </ul>
+                    </li>
+                    <li><a href="#">Content page 2</a></li>
+                    <li><a href="#">Content page 3</a></li>
+                    <li><a href="#">Content page 4</a></li>
+                    <li><a href="#">Content page 5</a></li>
+                    <li><a href="#">Content page 6</a></li>
+                </ul>
+            </div>
+            
+            <div id="local">
+                <h3>Local Nav. Bar</h3>
+                <ul>
+                    <li><a href="#">Content page 1</a>
+		                <ul>
+		                    <li><a href="#">Content page 1.1</a></li>
+		                    <li><a href="#">Content page 1.2</a></li>
+		                    <li><a href="#">Content page 1.3</a></li>
+		                    <li><a href="#">Content page 1.4</a></li>
+		                    <li><a href="#">Content page 1.5</a></li>
+		                    <li><a href="#">Content page 1.6</a></li>
+		                </ul>
+                    </li>
+                    <li><a href="#">Content page 2</a></li>
+                    <li><a href="#">Content page 3</a></li>
+                    <li><a href="#">Content page 4</a></li>
+                    <li><a href="#">Content page 5</a></li>
+                    <li><a href="#">Content page 6</a></li>
+                </ul>
+            </div>
+            
+            
+            <div id="nav">
+                <div class="wrapper">
+	                <h3>Nav. bar</h3>
+	                <ul class="clearfix">
+	                     <li><a href="#">Menu 1</a>
+			                <ul class="clearfix">
+			                     <li><a href="#">Menu 1.1</a></li>
+			                     <li><a href="#">Menu 1.2</a></li>
+			                     <li><a href="#">Menu 1.3</a></li>
+			                     <li><a href="#">Menu 1.4</a></li>
+			                     <li><a href="#">Menu 1.5</a></li>
+			                     <li class="last"><a href="#">Menu 6</a></li>
+			                </ul>
+	                     </li>
+	                     <li><a href="#">Menu 2</a></li>
+	                     <li><a href="#">Menu 3</a></li>
+	                     <li><a href="#">Menu 4</a></li>
+	                     <li><a href="#">Menu 5</a></li>
+	                     <li class="last"><a href="#">Menu 6</a></li>
+	                </ul>
+                </div>
+                <hr />
+            </div>
+	        </div>
+				</td><td class="right"></td></tr></table>
+
+			</div>
+			<div id="footer">
+				<table class="design"><tr><td class="left"></td><td class="middle">
+				<div class="content">
+		            Footer
+		        </div>
+				</td><td class="right"></td></tr></table>
+		    </div>
+		</div>
+
+    
+	    <div id="extra1">&nbsp;</div>
+	    <div id="extra2">&nbsp;</div>
+	</body>
+    <script type="text/javascript">
+		
+		/**
+		 * Call an action (URL), usgin ajax.
+		 * @param action the URL to call
+		 * @param parameters the parameters to be passed to URL
+		 * @param onSuccessFct Success callback function
+		 * @param onFailureFct Failure callback function
+		 * @param onExceptionFct Exception callback function
+		 */
+		function callAjaxAction(action, parameters, onSuccessFct, onFailureFct, onExceptionFct) {
+			new Ajax.Request(action, {
+				method: 'post',
+				parameters: parameters,
+				// The code 't.responseText.evalScripts();' evaluate inner scripts. Classic functions definition is not handled (use instead: maFct = function() {};
+				onSuccess: function(t) { try { onSuccessFct(t); t.responseText.evalScripts(); } catch(e) { onExceptionFct(e); }},
+				onFailure: function(t) { try { onFailureFct(t); } catch(e) { onExceptionFct(e); }},
+				onException: onExceptionFct
+			});
+		}
+		
+		/**
+		 * Get URL Anchor.
+		 */
+		function getURLAnchor(url) {
+			var strReturn = "";
+			var strHref = url;
+			if (!strHref) strHref = window.location.href;
+			if (strHref.indexOf("#") > -1) {
+				var strReturn = strHref.substr(strHref.indexOf("#")+1);
+			}
+			return unescape(strReturn);
+		}
+
+        /**
+         * Define page content loader.
+         */
+        function showPage(page) {
+            $('ajax-content').innerHTML = '<img border="0" src="../resources/images/wait.gif"/>';
+            callAjaxAction(page, {}, 
+            	function(resp) {$('ajax-content').innerHTML = resp.responseText}, 
+            	function(p) { $('ajax-content').innerHTML = 'Error while trying to retrieve page '+page+' - '+p}, 
+            	function(e) { $('ajax-content').innerHTML = 'Exception while trying to retrieve page '+page+' - '+e}
+            );
+            return false;
+        }
+
+        // Pre load using params
+        var page = getURLAnchor();
+        if (page) showPage(page);
+    </script>
+</html>

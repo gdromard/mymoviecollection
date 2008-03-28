@@ -50,7 +50,7 @@
 			<table class="design"><tr><td class="left"></td>
 			<td class="middle">
 		        <div class="content" class="clearfix">
-		            <div class="main">
+		            <div id="main">
 		            	<decorator:body/>
 		            </div>
             
@@ -75,12 +75,7 @@
                 <div class="wrapper">
 	                <h3>Nav. bar</h3>
 	                <ul class="clearfix">
-	                     <li><a href="#">Menu 1</a></li>
-	                     <li><a href="#">Menu 2</a></li>
-	                     <li><a href="#">Menu 3</a></li>
-	                     <li><a href="#">Menu 4</a></li>
-	                     <li><a href="#">Menu 5</a></li>
-	                     <li class="last"><a href="#">Menu 6</a></li>
+	                     <li><a href="<s:url value='/movie/list.action'/>">Movies</a></li>
 	                </ul>
                 </div>
                 <hr />
