@@ -11,7 +11,7 @@
 </head>
 <body>
 	<table>
-		<s:label key="movie.id" label="Movie n°"/>
+		<s:label key="movie.id" label="Movie nÂ°"/>
 		<s:label key="movie.title" label="Title"/>
 		<s:label key="movie.originalTitle" label="Original Title"/>
 		<s:label key="movie.size" label="Size"/>
@@ -29,6 +29,7 @@
 		<s:label label="Cast3" key="movie.cast3.name"/>
 		<s:label label="Cast4" key="movie.cast4.name"/>
 		<s:label label="Synopsis" key="movie.synopsis"/>
+		<tr><td class="buttons" colspan="2"><a class="btn" href="<s:url value='/movie/edit.action?id=%{id}'/>">Edit</a></td></tr>
 	</table>
 </body>
 </html>

@@ -30,7 +30,10 @@
 		<s:select                     name="movie.cast3.id"       list="castings" listKey="id" listValue="%{firstname + ', ' + lastname}" emptyOption="true"/>
 		<s:select                     name="movie.cast4.id"       list="castings" listKey="id" listValue="%{firstname + ', ' + lastname}" emptyOption="true"/>
 		<s:textarea label="Synopsis" name="movie.synopsis"/>
-		<s:submit />
+		<tr><td class="buttons" colspan="2">
+			<a class="btn" href="<s:url value='/movie/view.action?id=%{id}'/>">Cancel</a>
+			<input class="btn" type="submit" value="Save"/>
+		</td></tr>
 	</s:form>
 </body>
 </html>

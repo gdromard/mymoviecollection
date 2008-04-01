@@ -13,7 +13,7 @@ import net.dromard.movies.model.MovieVersion;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.Preparable;
 
-public class MovieAction extends ServiceLocatorAware implements Preparable {
+public class MovieAction extends ServiceLocatorAware implements ActionIF, Preparable {
     private Movie movie;
     private Integer id;
 	private List<MovieFormat> formats;
@@ -22,14 +22,50 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
 	private List<MovieQuality> qualities;
 	private List<MovieVersion> versions;
 	private List<Casting> castings;
+    private List<Movie> movies;
 
     /**
-     * Default action (use for edit & view).
+     * Default action does nothing just returning success.
      * @return success result.
      */
     public String execute() {
-    	System.out.println("[DEBUG] MovieAction.execute()");
-        //prepare();
+        return Action.SUCCESS;
+    }
+
+    /**
+     * List action.
+     * @return success result.
+     */
+    public String list() {
+        this.movies = getServiceLocator().getDaoLocator().getMovieDAO().findAll();
+        return Action.SUCCESS;
+    }
+
+    /**
+     * Edit action.
+     * @return success result.
+     */
+    public String edit() {
+    	formats = getServiceLocator().getDaoLocator().getMovieFormatDAO().findAll();
+    	genres = getServiceLocator().getDaoLocator().getMovieGenreDAO().findAll();
+    	nationalities = getServiceLocator().getDaoLocator().getMovieNationalityDAO().findAll();
+    	qualities = getServiceLocator().getDaoLocator().getMovieQualityDAO().findAll();
+    	versions = getServiceLocator().getDaoLocator().getMovieVersionDAO().findAll();
+    	castings = getServiceLocator().getDaoLocator().getCastingDAO().findAll();
+    	System.out.println("[DEBUG] MovieAction.prepare() - formats.size: " + formats.size());
+    	System.out.println("[DEBUG] MovieAction.prepare() - genres.size: " + genres.size());
+    	System.out.println("[DEBUG] MovieAction.prepare() - nationality.size: " + nationalities.size());
+    	System.out.println("[DEBUG] MovieAction.prepare() - qualities.size: " + qualities.size());
+    	System.out.println("[DEBUG] MovieAction.prepare() - versions.size: " + versions.size());
+    	System.out.println("[DEBUG] MovieAction.prepare() - castings.size: " + castings.size());
+        return Action.SUCCESS;
+    }
+
+    /**
+     * View action.
+     * @return success result.
+     */
+    public String view() {
         return Action.SUCCESS;
     }
 
@@ -39,8 +75,8 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
      */
     public String update() {
         getServiceLocator().getDaoLocator().getMovieDAO().persist(movie);
-        this.movie = new Movie();
-        return Action.SUCCESS;
+        this.movie = null;
+        return VIEW;
     }
 
     /**
@@ -49,7 +85,7 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
      */
     public String delete() {
     	getServiceLocator().getDaoLocator().getMovieDAO().remove(id);
-        return Action.SUCCESS;
+        return LIST;
     }
 
     /**
@@ -59,18 +95,6 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
     	System.out.println("[DEBUG] MovieAction.prepare() - id: " + id);
         if (id != null) {
         	movie = getServiceLocator().getDaoLocator().getMovieDAO().findById(id);
-        	formats = getServiceLocator().getDaoLocator().getMovieFormatDAO().findAll();
-        	genres = getServiceLocator().getDaoLocator().getMovieGenreDAO().findAll();
-        	nationalities = getServiceLocator().getDaoLocator().getMovieNationalityDAO().findAll();
-        	qualities = getServiceLocator().getDaoLocator().getMovieQualityDAO().findAll();
-        	versions = getServiceLocator().getDaoLocator().getMovieVersionDAO().findAll();
-        	castings = getServiceLocator().getDaoLocator().getCastingDAO().findAll();
-        	System.out.println("[DEBUG] MovieAction.prepare() - formats.size: " + formats.size());
-        	System.out.println("[DEBUG] MovieAction.prepare() - genres.size: " + genres.size());
-        	System.out.println("[DEBUG] MovieAction.prepare() - nationality.size: " + nationalities.size());
-        	System.out.println("[DEBUG] MovieAction.prepare() - qualities.size: " + qualities.size());
-        	System.out.println("[DEBUG] MovieAction.prepare() - versions.size: " + versions.size());
-        	System.out.println("[DEBUG] MovieAction.prepare() - castings.size: " + castings.size());
         }
     }
     
@@ -93,7 +117,13 @@ public class MovieAction extends ServiceLocatorAware implements Preparable {
     }
 
     
-    /* ----------- List Setters / Getters ----------- */
+    /* ------------- List Setters / Getters ------------- */
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+    
+    /* ----------- Sub List Setters / Getters ----------- */
     
 	public List<MovieFormat> getFormats() {
 		return formats;

@@ -10,7 +10,8 @@ table.grid {
 table.grid th {
 	text-align: center;
 	padding: 5px;
-	background: #4e8ab9;
+	background: #376987;
+	color: white;
 }
 table.grid td {
 	padding: 3px;	
