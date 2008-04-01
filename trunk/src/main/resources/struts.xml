@@ -14,23 +14,10 @@
 	<package name="movie" namespace="/movie" extends="struts-default">
 		<default-interceptor-ref name="paramsPrepareParamsStack"/>
 
-		<action name="list" class="moviesAction">
-			<result>/jsp/movie/list.jsp</result>
-		</action>
-		<action name="view" class="movieAction">
-			<result>/jsp/movie/view.jsp</result>
-		</action>
-		<action name="edit" class="movieAction">
-			<result>/jsp/movie/edit.jsp</result>
-		</action>
-		<action name="create" class="movieAction">
-			<result type="chain">view</result>
-		</action>
-		<action name="delete" class="movieAction" method="delete">
-			<result type="chain">list</result>
-		</action>
-		<action name="update" class="movieAction" method="update">
-			<result type="chain">view</result>
+		<action name="*" class="movieAction" method="{1}">
+			<result>/jsp/movie/{1}.jsp</result>
+			<result name="list" type="chain">list</result>
+			<result name="view" type="chain">view</result>
 		</action>
 	</package>
 

@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC 
-	"-//W3C//DTD XHTML 1.1 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
@@ -9,7 +7,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 	<title><decorator:title default="Struts Starter"/></title>
+    <decorator:head/>
     <link href="<s:url value='/resources/styles/main.css'/>" rel="stylesheet" type="text/css" media="all"/>
     <link href="<s:url value='/struts/niftycorners/niftyCorners.css'/>" rel="stylesheet" type="text/css"/>
     <link href="<s:url value='/struts/niftycorners/niftyPrint.css'/>" rel="stylesheet" type="text/css" media="print"/>
@@ -27,7 +27,6 @@
     <style type="text/css">
     	body { behavior: url(<s:url value='/resources/styles/csshover.htc'/>); }
     </style>
-    <decorator:head/>
 </head>
 <body id="page-home">
     <div id="page">

@@ -11,8 +11,12 @@
 		margin: 0 0 1em 0;
 		padding: 0;
 	}
-	label {
+	label.label {
 		font-weight: bold;
+		white-space: nowrap;
+	}
+	.tdLabel {
+		text-align: left;
 	}
 	fieldset {
 		border: 1px solid #eee;
@@ -49,13 +53,19 @@
         margin: 0;
 		padding: 2px;
 	}
-	
+	input.text, select, textarea {
+		border: 1px solid darkgray;
+		width: 200px;
+	}
+	select {
+		width: 205px;
+	}
 	input, select {
 		vertical-align:middle;
 	}
 	textarea {
-		width: 200px;
-		height: 8em;
+		width: 400px;
+		height: 150px;
 	}
 	
 	input.check {
@@ -95,6 +105,23 @@
     form div.submit input {
 		height: 2em;
         width: 15em;
+	}
+	.buttons {
+		text-align: right;
+	}
+	.btn, .btn:link, .btn:visited {
+		background-color:#555555;
+		border:1px solid #000000;
+		color:#FFFFFF;
+		cursor:pointer;
+		font-weight:bold;
+		margin:5px;
+		padding:2px 2px 3px;
+		text-decoration:none;
+	}
+	button.btn, input.btn {
+		padding:2px;
+		margin: 0px;
 	}
 /* END FORM ELEMENTS */
 		
