@@ -145,7 +145,7 @@ public class MovieCoverExtractorService extends DAOLocatorAware implements IMovi
             		OutputStream outStream = null;
             		if (entry.getName().endsWith(".film")) {
             			film = new File(entry.getName());
-            			outStream = new FileOutputStream(image);
+            			outStream = new FileOutputStream(film);
             		} else {
             			image  = new File(imagePath + "/" + entry.getName());
             			System.out.println("Image has been saved to : " + image.getAbsolutePath());
