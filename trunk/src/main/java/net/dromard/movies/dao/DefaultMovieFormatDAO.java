@@ -30,6 +30,6 @@ public class DefaultMovieFormatDAO extends GenericDAO implements IMovieFormatDAO
 	}
 
 	public List<MovieFormat> findAll() {
-		return super.findAll(MovieFormat.class);
+		return super.findAll(MovieFormat.class, "name");
 	}
 }

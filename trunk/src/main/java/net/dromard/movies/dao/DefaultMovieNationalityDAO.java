@@ -30,7 +30,7 @@ public class DefaultMovieNationalityDAO extends GenericDAO implements IMovieNati
 	}
 
 	public List<MovieNationality> findAll() {
-		return super.findAll(MovieNationality.class);
+		return super.findAll(MovieNationality.class, "name");
 	}
 
 	@SuppressWarnings("unchecked")
