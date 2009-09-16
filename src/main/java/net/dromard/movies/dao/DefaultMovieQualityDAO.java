@@ -30,6 +30,6 @@ public class DefaultMovieQualityDAO extends GenericDAO implements IMovieQualityD
 	}
 
 	public List<MovieQuality> findAll() {
-		return super.findAll(MovieQuality.class);
+		return super.findAll(MovieQuality.class, "name");
 	}
 }

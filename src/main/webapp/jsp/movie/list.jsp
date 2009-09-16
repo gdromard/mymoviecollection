@@ -9,21 +9,34 @@
 	<title>Movie List</title>
 </head>
 <body>
-	<table class="grid">
+	<table class="grid" width="90%">
 		<tr>
 			<th>Id</th>
 			<th>Title</th>
 		</tr>
 		<s:iterator value="movies" status="it">
-			<tr class="line${it.index%2}">
-				<s:url id="viewUrl" action="view">
-					<s:param name="id" value="id" />
-				</s:url>
-				<td><s:property value="id"/></td>
-				<td><s:a href="%{viewUrl}"><s:property value="title"/></s:a></td>
-			</tr>
+			<s:if test="#it.index >= (page-1)*pageSize && #it.index < page*pageSize">
+				<tr class="line${it.index%2}">
+					<s:url id="viewUrl" action="view">
+						<s:param name="id" value="id" />
+					</s:url>
+					<td><s:property value="id"/></td>
+					<td><s:a href="%{viewUrl}"><s:property value="title"/></s:a></td>
+				</tr>
+			</s:if>
 		</s:iterator>
 	</table>
+	<center>
+		<s:if test="page > 1">
+			<s:url id="listUrl" action="list"><s:param name="page" value="page-1" /><s:param name="pageSize" value="pageSize" /></s:url>
+			<s:a cssClass="btn" href="%{listUrl}"><s:text name="prev"/></s:a>
+		</s:if>
+		<s:text name="%{page} / %{movies.size() / pageSize}" />
+		<s:if test="page < movies.size() / pageSize">
+			<s:url id="listUrl" action="list"><s:param name="page" value="page+1" /><s:param name="pageSize" value="pageSize" /></s:url>
+			<s:a cssClass="btn" href="%{listUrl}"><s:text name="next"/></s:a>
+		</s:if>
+	</center>
 </body>
 </html>
 	

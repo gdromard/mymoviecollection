@@ -30,6 +30,6 @@ public class DefaultMovieVersionDAO extends GenericDAO implements IMovieVersionD
 	}
 
 	public List<MovieVersion> findAll() {
-		return super.findAll(MovieVersion.class);
+		return super.findAll(MovieVersion.class, "name");
 	}
 }

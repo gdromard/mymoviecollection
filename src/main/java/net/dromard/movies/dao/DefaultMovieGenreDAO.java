@@ -30,7 +30,7 @@ public class DefaultMovieGenreDAO extends GenericDAO implements IMovieGenreDAO {
 	}
 
 	public List<MovieGenre> findAll() {
-		return super.findAll(MovieGenre.class);
+		return super.findAll(MovieGenre.class, "name");
 	}
 
 	@SuppressWarnings("unchecked")

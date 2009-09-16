@@ -30,7 +30,7 @@ public class DefaultCastingDAO extends GenericDAO implements ICastingDAO {
 	}
 
 	public List<Casting> findAll() {
-		return super.findAll(Casting.class);
+		return super.findAll(Casting.class, "firstname");
 	}
 
 	@SuppressWarnings("unchecked")

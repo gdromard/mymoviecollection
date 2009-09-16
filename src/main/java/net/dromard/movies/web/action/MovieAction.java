@@ -22,22 +22,12 @@ public class MovieAction extends ServiceLocatorAware implements ActionIF, Prepar
 	private List<MovieQuality> qualities;
 	private List<MovieVersion> versions;
 	private List<Casting> castings;
-    private List<Movie> movies;
 
     /**
      * Default action does nothing just returning success.
      * @return success result.
      */
     public String execute() {
-        return Action.SUCCESS;
-    }
-
-    /**
-     * List action.
-     * @return success result.
-     */
-    public String list() {
-        this.movies = getServiceLocator().getDaoLocator().getMovieDAO().findAll();
         return Action.SUCCESS;
     }
 
@@ -70,11 +60,30 @@ public class MovieAction extends ServiceLocatorAware implements ActionIF, Prepar
     }
 
     /**
+     * View action.
+     * @return success result.
+     */
+    public String next() {
+    	movie = getServiceLocator().getDaoLocator().getMovieDAO().findNext(movie);
+        return VIEW;
+    }
+
+    /**
+     * View action.
+     * @return success result.
+     */
+    public String previous() {
+    	movie = getServiceLocator().getDaoLocator().getMovieDAO().findPrevious(movie);
+        return VIEW;
+    }
+
+    /**
      * Update action.
      * @return success result.
      */
     public String update() {
-        getServiceLocator().getDaoLocator().getMovieDAO().persist(movie);
+        //getServiceLocator().getDaoLocator().getMovieDAO().persist(movie);
+    	System.out.println("\n\n"+movie.getSynopsis());
         this.movie = null;
         return VIEW;
     }
@@ -114,13 +123,6 @@ public class MovieAction extends ServiceLocatorAware implements ActionIF, Prepar
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    }
-
-    
-    /* ------------- List Setters / Getters ------------- */
-
-    public List<Movie> getMovies() {
-        return movies;
     }
     
     /* ----------- Sub List Setters / Getters ----------- */

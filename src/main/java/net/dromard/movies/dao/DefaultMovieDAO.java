@@ -30,11 +30,24 @@ public class DefaultMovieDAO extends GenericDAO implements IMovieDAO {
 	}
 
 	public List<Movie> findAll() {
-		return super.findAll(Movie.class);
+		return super.findAll(Movie.class, "title");
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Movie> find(String search) {
+		return getEntityManager().createQuery("from " + Movie.class.getName() + " as obj where lower(obj.title) like lower(" + formatString("%"+search+"%") + ") or lower(obj.originalTitle) like lower(" + formatString("%"+search+"%") + ") or lower(obj.synopsis) like lower(" + formatString("%"+search+"%") + ")").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Movie> findByTitle(String title) {
 		return getEntityManager().createQuery("from " + Movie.class.getName() + " as obj where lower(obj.title) like lower(" + formatString("%"+title+"%") + ") or lower(obj.originalTitle) like lower(" + formatString("%"+title+"%") + ")").getResultList();
+	}
+
+	public Movie findNext(Movie movie) {
+		return super.findNext(movie, "title", movie.getTitle());
+	}
+
+	public Movie findPrevious(Movie movie) {
+		return super.findPrevious(movie, "title", movie.getTitle());
 	}
 }

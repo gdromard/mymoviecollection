@@ -36,8 +36,26 @@ public class GenericDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <T> List<T> findAll(Class<T> entityClass) {
-		return getEntityManager().createQuery("from " + entityClass.getName()).getResultList();
+	public <T> List<T> findAll(Class<T> entityClass, String orderField) {
+		return getEntityManager().createQuery("from " + entityClass.getName() + " order by " + orderField).getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T findNext(T entity, String field, String value) {
+		List<T> resultList = getEntityManager().createQuery("from " + entity.getClass().getName() + " where " + field + " > " + formatString(value) + " order by " + field).getResultList();
+		if (resultList.size() > 0) {
+			return resultList.get(0);
+		}
+		return entity;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T findPrevious(T entity, String field, String value) {
+		List<T> resultList = getEntityManager().createQuery("from " + entity.getClass().getName() + " where " + field + " < " + formatString(value) + " order by " + field).getResultList();
+		if (resultList.size() > 0) {
+			return resultList.get(resultList.size()-1);
+		}
+		return entity;
 	}
 	
 	public void flush() {
