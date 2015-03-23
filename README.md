@@ -6,4 +6,6 @@ In sus it handle creation of a new movie by extracting movie cover and informati
 
 The build process use Maven2. These version can be run with the maven command line:
 
+```bash
 mvn -Djetty.port=8888 jetty:run
+```
